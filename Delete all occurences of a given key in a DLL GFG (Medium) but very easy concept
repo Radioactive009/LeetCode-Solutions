@@ -1,0 +1,34 @@
+You are given the head_ref of a doubly Linked List and a Key. Your task is to delete all occurrences of the given key if it is present and return the new DLL.
+
+Example1:
+
+Input: 
+2<->2<->10<->8<->4<->2<->5<->2
+2
+Output: 
+10<->8<->4<->5
+Explanation: 
+All Occurences of 2 have been deleted.
+
+
+class Solution {
+    static Node deleteAllOccurOfX(Node head, int x) {
+        // code here
+       Node curr = head;
+       while(curr!=null){
+           if(curr.data==x){
+               if(curr == head){
+                   head = curr.next;
+               }
+               if(curr.prev!=null){
+                   curr.prev.next = curr.next;
+               }
+               if(curr.next!=null){
+                   curr.next.prev = curr.prev;
+               }
+           }
+           curr = curr.next;
+       }
+       return head;
+    }
+}
