@@ -1,0 +1,19 @@
+class Solution {
+    Node removeDuplicates(Node head) {
+      Node slow = head;
+      Node fast = head.next;
+      while(fast!=null){
+          if(slow.data == fast.data){
+              slow.next = fast.next;
+              if(fast.next!=null){
+                  fast.next.prev = slow;
+              }
+              fast = slow.next;
+          } else{
+              slow = fast;
+              fast = fast.next;
+          }
+      }
+      return head;
+    }
+}
